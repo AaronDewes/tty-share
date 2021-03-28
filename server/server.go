@@ -28,6 +28,7 @@ type AASessionTemplateModel struct {
 	SessionID string
 	Salt      string
 	WSPath    string
+	Title     string
 }
 
 // TTYServerConfig is used to configure the tty server before it is started
@@ -36,6 +37,7 @@ type TTYServerConfig struct {
 	FrontendPath       string
 	PTY                PTYHandler
 	SessionID          string
+	Title              string
 }
 
 // TTYServer represents the instance of a tty server
@@ -99,11 +101,13 @@ func NewTTYServer(config TTYServerConfig) (server *TTYServer) {
 		routesHandler.HandleFunc(fmt.Sprintf("/s/%s/", session), func(w http.ResponseWriter, r *http.Request) {
 			wsPath := "/s/" + session + "/ws"
 			pathPrefix := "/s/" + session
+			title := server.config.Title
 			// Check the frontend/templates/tty-share.in.html file to see where the template applies
 			templateModel := struct {
 				PathPrefix string
 				WSPath     string
-			}{pathPrefix, wsPath}
+				Title      string
+			}{pathPrefix, wsPath, title}
 
 			// TODO Extract these in constants
 			w.Header().Add("TTYSHARE-VERSION", "1")

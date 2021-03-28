@@ -35,7 +35,6 @@ let mainConfig  = {
     plugins: [
       new copyWebpackPlugin({
         patterns: [
-          {from: 'static', },
           {from:   'templates',},
         ]}),
     ],

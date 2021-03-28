@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bufio"
+	//"bufio"
 	"flag"
 	"fmt"
 	"io"
@@ -16,12 +16,13 @@ import (
 
 var version string = "0.0.0"
 
-func createServer(frontListenAddress string, frontendPath string, pty server.PTYHandler, sessionID string) *server.TTYServer {
+func createServer(frontListenAddress string, frontendPath string, pty server.PTYHandler, sessionID string, Title string) *server.TTYServer {
 	config := ttyServer.TTYServerConfig{
 		FrontListenAddress: frontListenAddress,
 		FrontendPath:       frontendPath,
 		PTY:                pty,
 		SessionID:          sessionID,
+		Title:              Title,
 	}
 
 	server := ttyServer.NewTTYServer(config)
@@ -47,6 +48,7 @@ Usage:
                 [--logfile <file name>] [--listen <[ip]:port>]
                 [--frontend-path <path>] [--tty-proxy <host:port>]
                 [--readonly] [--public] [no-tls] [--verbose] [--version]
+                [--title <Title of the session>]
       tty-share [--verbose] [--logfile <file name>]
                 [--detach-keys]                     <session URL>                 # connect to an existing session, as a client
 
@@ -76,6 +78,7 @@ Flags:
 	noTLS := flag.Bool("no-tls", false, "Don't use TLS to connect to the tty-proxy server. Useful for local debugging")
 	detachKeys := flag.String("detach-keys", "ctrl-o,ctrl-c", "Sequence of keys to press for closing the connection. Supported: https://godoc.org/github.com/moby/term#pkg-variables.")
 	verbose := flag.Bool("verbose", false, "Verbose logging")
+	Title := flag.String("title", "tty-share", "Terminal title")
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "%s", usageString)
 		flag.PrintDefaults()
@@ -166,8 +169,10 @@ Flags:
 	}
 
 	fmt.Printf("local session: http://%s/s/local/\n", *listenAddress)
+	/*
 	fmt.Printf("Press Enter to continue!\n")
 	bufio.NewReader(os.Stdin).ReadString('\n')
+	*/
 
 	stopPtyAndRestore := func () {
 		ptyMaster.Stop()
@@ -181,7 +186,7 @@ Flags:
 		pty = &nilPTY{}
 	}
 
-	server := createServer(*listenAddress, *frontendPath, pty, sessionID)
+	server := createServer(*listenAddress, *frontendPath, pty, sessionID, *Title)
 	if cols, rows, e := ptyMaster.GetWinSize(); e == nil {
 		server.WindowSize(cols, rows)
 	}

@@ -62,7 +62,7 @@ go get github.com/elisescu/tty-share
 
 The frontend code (the code that runs in the browser session) lives under `server/frontend`, and it is compiled into `server/assets_bundle.go` go file, committed to this git repo. To rebuild this bundle of web resources, make sure you have `node` and `npm` installed, and then run: `make -C server frontend`. Unless you change the browser/frontend code, you don't need to do this - the code is already precompiled and bundled in `assets_bundle.go`.
 
-For cross-compilation you can use the GO building [environment variables](https://golang.org/doc/install/source#environment). For example, to build the `tty-share` for raspberrypi, you can do `GOOS=linux GOARCH=arm GOARM=6 go build` (check your raspberrypi arch with `uname -a`).
+For cross-compilation you can use the GO building [environment variables](https://golang.org/doc/install/source#environment). For example, to build the `tty-share` for the Raspberry Pi, you can do `GOOS=linux GOARCH=arm GOARM=6 go build` (check your Raspberry Pi arch with `uname -a`).
 
 ## Security
 

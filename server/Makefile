@@ -14,7 +14,7 @@ assets_bundle.go: $(TTY_SERVER_ASSETS)
 frontend: cleanfront frontend/public/index.html assets_bundle.go
 
 frontend/public/index.html:
-	cd frontend && npm install && npm run build && cd -
+	cd frontend && yarn && yarn build && cd -
 
 cleanfront:
 	rm -fr frontend/public
