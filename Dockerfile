@@ -1,4 +1,4 @@
-FROM 1.16-buster
+FROM go:1.16-buster
 
 COPY . /go/src/github.com/AaronDewes/tty-share
 

@@ -111,7 +111,6 @@ func (pty *ptyMaster) Wait() (err error) {
 
 func (pty *ptyMaster) Restore() {
 	terminal.Restore(0, pty.terminalInitState)
-	return
 }
 
 func (pty *ptyMaster) Stop() (err error) {

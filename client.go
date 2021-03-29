@@ -11,7 +11,7 @@ import (
 	"sync/atomic"
 	"syscall"
 
-	"github.com/elisescu/tty-share/server"
+	"github.com/AaronDewes/tty-share/server"
 	"github.com/gorilla/websocket"
 	"github.com/moby/term"
 	log "github.com/sirupsen/logrus"

@@ -8,9 +8,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/elisescu/tty-share/proxy"
-	"github.com/elisescu/tty-share/server"
-	ttyServer "github.com/elisescu/tty-share/server"
+	"github.com/AaronDewes/tty-share/proxy"
+	"github.com/AaronDewes/tty-share/server"
+	ttyServer "github.com/AaronDewes/tty-share/server"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.com/elisescu/tty-share.svg?branch=master)](https://travis-ci.com/elisescu/tty-share)
+[![Build Status](https://travis-ci.com/AaronDewes/tty-share.svg?branch=master)](https://travis-ci.com/AaronDewes/tty-share)
 
 # tty-share
 
-[tty-share](https://tty-share.com) is a very simple tool used to share your Linux/OSX terminal over the Internet. It is written in GO, results in a static cross-platform binary with no dependencies, and therefore will also work on your Raspberry Pi.
+tty-share is a very simple tool used to share your Linux/OSX terminal over the Internet. It is written in GO, results in a static cross-platform binary with no dependencies, and therefore will also work on your Raspberry Pi.
 
-The remote participant needs **not setup**, and they can join the session from the browser or from the terminal (`tty-share <secret URL>`). The session can be shared either over the Internet, or only in the local network. When sharing it over the Internet (outside your NAT), `tty-share` will connect to [proxy server](https://github.com/elisescu/tty-proxy) that will mediate the communication between the participants. An instance of this server runs at [tty-share.com](https://tty-share.com), but you can run your own.
+The remote participant needs **not setup**, and they can join the session from the browser or from the terminal (`tty-share <secret URL>`). The session can be shared either over the Internet, or only in the local network. When sharing it over the Internet (outside your NAT), `tty-share` will connect to [proxy server](https://github.com/elisescu/tty-proxy) that will mediate the communication between the participants. An instance of this server runs at [tty-share.com](https://tty-share.com), but you can run your own. Please note that this is a fork of the tty-share service, and that server wasn't build for this fork, so there might be incompatibilities.
 
 ## Demos
 
@@ -23,7 +23,7 @@ The remote participant needs **not setup**, and they can join the session from t
 
 If you only want to try it out, there's a Docker image you can use:
 ```bash
-docker run -it elisescu/tty-share --public
+docker run -it AaronDewes/tty-share --public
 ```
 
 **Brew**
@@ -32,7 +32,7 @@ If you are on OSX and use [brew](https://brew.sh/), then you can simply do a `br
 
 **Binary releases**
 
-Otherwise, download the latest `tty-share` binary [release](https://github.com/elisescu/tty-share/releases), and run it:
+Otherwise, download the latest `tty-share` binary [release](https://github.com/AaronDewes/tty-share/releases), and run it:
 
 **Running it**
 ```
@@ -57,7 +57,7 @@ You can join a session by opening the session URLs in the browser, or with anoth
 
 Simply run
 ```
-go get github.com/elisescu/tty-share
+go get github.com/AaronDewes/tty-share
 ```
 
 The frontend code (the code that runs in the browser session) lives under `server/frontend`, and it is compiled into `server/assets_bundle.go` go file, committed to this git repo. To rebuild this bundle of web resources, make sure you have `node` and `npm` installed, and then run: `make -C server frontend`. Unless you change the browser/frontend code, you don't need to do this - the code is already precompiled and bundled in `assets_bundle.go`.
@@ -68,7 +68,7 @@ For cross-compilation you can use the GO building [environment variables](https:
 
 `tty-share` connects over a TLS connection to the server, which uses a proxy for the SSL termination, and the browser terminal is served over HTTPS. The communication on both sides is encrypted and secured, in the same way as other similar tools are doing it (e.g. tmate, VSC, etc).
 
-However, end-to-end encryption is on the TODO list. Otherwise, if you don't trust my [tty-proxy](https://github.com/elisescu/tty-proxy) installation, you can run your own.
+However, end-to-end encryption is on the TODO list. Otherwise, if you don't trust the public [tty-proxy](https://github.com/elisescu/tty-proxy) installation, you can run your own.
 
 
 ## Similar solutions
@@ -83,7 +83,7 @@ However, the two disadvantages with this tool are the need of logging in with a 
 
 This is a great tool, and I used it quite a few times before. At the time I started my project, [tmate.io](https://tmate.io) didn't have the option to join the session from the browser, and one had to use `ssh`. In most cases, `ssh` is not a problem at all - in fact it's even preferred, but there are cases when you just don't have easy access to an `ssh` client, e.g.: joining from a Windows machine, or from your smartphone. In the meantime, the project added some support for joining a terminal session in the browser too.
 
-Perhaps one downside with *tmate* is that it comes with quite a few dependencies which can make your life complicated if you want to compile it for ARM, for example. Running it on a raspberry pi might not be as simple as you want it, unless you use Debian.
+Perhaps one downside with *tmate* is that it comes with quite a few dependencies which can make your life complicated if you want to compile it for ARM, for example. Running it on a Raspberry Pi might not be as simple as you want it, unless you use Debian.
 
 ## Credits
 

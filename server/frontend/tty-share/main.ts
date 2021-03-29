@@ -16,8 +16,13 @@ if (window.location.protocol === "https:") {
     wsAddress = "ws://";
 }
 
-let ttyWindow = window as any;
+class TTYWindow extends Window {
+    ttyInitialData?: {
+        wsPath: string;
+    };
+}
+let ttyWindow = window as TTYWindow;
 wsAddress += ttyWindow.location.host + ttyWindow.ttyInitialData.wsPath;
 
 
-const ttyReceiver = new TTYReceiver(wsAddress, document.getElementById('terminal') as HTMLDivElement);
+new TTYReceiver(wsAddress, document.getElementById('terminal') as HTMLDivElement);

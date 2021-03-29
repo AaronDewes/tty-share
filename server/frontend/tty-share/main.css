@@ -1,6 +1,6 @@
 body {
     background: #111;
-    color: #000;
+    color: #ddd;
     font-family: HelveticaNeue, 'Helvetica Neue', 'Lucida Grande', Arial, sans-serif;
 }
 
@@ -35,7 +35,6 @@ span {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     border-bottom: 1px solid white;
-    /*! padding-bottom: 0.5rem; */
 }
 
 .buttons {

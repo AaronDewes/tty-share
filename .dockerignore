@@ -1,2 +1,6 @@
-**/.git
+**/.git*
 **/node_modules
+**/.travis.yml
+**/doc
+**/server/frontend
+**/scripts

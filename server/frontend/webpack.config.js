@@ -1,5 +1,5 @@
 const webpack = require("webpack");
-const copyWebpackPlugin = require('copy-webpack-plugin')
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
 const develBuild = process.env.TTY_SHARE_ENV === 'development';
 
@@ -31,12 +31,18 @@ let mainConfig  = {
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js"],
+      fallback: {
+          "buffer": require.resolve("buffer/"),
+        },
     },
     plugins: [
       new copyWebpackPlugin({
         patterns: [
-          {from:   'templates',},
-        ]}),
+          {
+              from:   'templates'
+          },
+        ],
+    }),
     ],
 };
 
