@@ -32,8 +32,7 @@ let mainConfig  = {
     resolve: {
       extensions: [".ts", ".tsx", ".js"],
       fallback: {
-          "buffer": require.resolve("buffer/"),
-          "process": require.resolve("process/browser")
+          "buffer": require.resolve("buffer/")
         },
     },
     plugins: [
