@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/elisescu/pty v1.0.2
+	github.com/go-bindata/go-bindata v3.1.2+incompatible // indirect
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/websocket v1.4.2
 	github.com/hashicorp/yamux v0.0.0-20210316155119-a95892c5f864
