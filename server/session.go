@@ -54,10 +54,12 @@ func (session *ttyShareSession) Write(data []byte) (int, error) {
 	return len(data), nil
 }
 
-// Runs the callback cb for each of the receivers in the list of the receivers, as it was when
-// this function was called. Note that there might be receivers which might have lost
-// the connection since this function was called.
-// Return false in the callback to not continue for the rest of the receivers
+/* 
+  Runs the callback cb for each of the receivers in the list of the receivers, as it was when
+  this function was called. Note that there might be receivers which might have lost
+  the connection since this function was called.
+  Return false in the callback to not continue for the rest of the receivers
+*/
 func (session *ttyShareSession) forEachReceiverLock(cb func(rcvConn *TTYProtocolWSLocked) bool) {
 	session.mainRWLock.RLock()
 	// TODO: Maybe find a better way?

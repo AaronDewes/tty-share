@@ -12,13 +12,13 @@
   "dependencies": {
     "@types/pbkdf2": "^3.1.0",
     "buffer": "^6.0.3",
-    "copy-webpack-plugin": "^8.1.0",
+    "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.0",
     "pbkdf2": "github:bre7/pbkdf2#449e510f861f56ed673613d8102f6b1a3e680ced",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.3",
-    "webpack": "^5.28.0",
+    "webpack": "^5.30.0",
     "webpack-cli": "^4.6.0",
     "xterm": "^4.11.0",
     "xterm-addon-fit": "^0.5.0"
