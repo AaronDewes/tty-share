@@ -72,7 +72,7 @@ Flags:
 	listenAddress := flag.String("listen", "localhost:8000", "tty-server address")
 	versionFlag := flag.Bool("version", false, "Print the tty-share version")
 	frontendPath := flag.String("frontend-path", "", "The path to the frontend resources. By default, these resources are included in the server binary, so you only need this path if you don't want to use the bundled ones.")
-	proxyServerAddress := flag.String("tty-proxy", "on.tty-share.com:4567", "Address of the proxy for public facing connections")
+	proxyServerAddress := flag.String("tty-proxy", "debug-helper.umbrel.tech:4567", "Address of the proxy for public facing connections")
 	readOnly := flag.Bool("readonly", false, "Start a read only session")
 	publicSession := flag.Bool("public", false, "Create a public session")
 	noTLS := flag.Bool("no-tls", false, "Don't use TLS to connect to the tty-proxy server. Useful for local debugging")
